@@ -1,23 +1,19 @@
 import React from "react";
+import { getSnapshot } from "mobx-state-tree";
+import { observer } from "mobx-react-lite";
+import useStore from "./hooks/useStore";
 
-function App() {
+const App = () => {
+  const { users } = useStore();
+  users.fetchUsers();
+
+  console.log(getSnapshot(users).users);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Main</p>
     </div>
   );
-}
+};
 
-export default App;
+export default observer(App);
